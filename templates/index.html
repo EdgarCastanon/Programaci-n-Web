@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Hola Flask</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Hola Flask + Jinja</h1>
+        <p>
+            Esta es mi primera aplicación Web utilizando
+            Python y Flask.
+        </p>
+        <form action="/saludar" method="POST">
+            <label for="nombre">
+                Dame tu nombre:
+            </label>
+            <input type="text"
+                   id="nombre"
+                   name="nombre"
+                   placeholder="Escribe tu nombre"
+                   required>
+            <button type="submit">
+                Saludar
+            </button>
+        </form>
+    </div>
+</body>
+</html>
