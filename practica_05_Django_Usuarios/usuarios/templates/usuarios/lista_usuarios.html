@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block titulo %}Gestión de usuarios{% endblock %}
+
+{% block contenido %}
+<div class="contenedor">
+    <h1>Gestión de usuarios</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for perfil in usuarios %}
+            <tr>
+                <td>{{ perfil.usuario.id }}</td>
+                <td>{{ perfil.usuario.username }}</td>
+                <td>{{ perfil.usuario.email }}</td>
+                <td>{{ perfil.get_rol_display }}</td>
+                <td>
+                    <a href="{% url 'eliminar_usuario' perfil.usuario.id %}"
+                       onclick="return confirm('¿Eliminar al usuario {{ perfil.usuario.username }}?');">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p>
+        <a href="{% url 'home' %}">Regresar al inicio</a>
+    </p>
+</div>
+{% endblock %}

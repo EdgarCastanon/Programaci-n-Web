@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}Inicio{% endblock %}
+
+{% block contenido %}
+<div class="contenedor" id="bienvenida" data-rol="{{ rol }}" data-usuario="{{ user.username }}">
+    <h1>Bienvenido, {{ user.username }}</h1>
+    <p id="mensaje-rol">Cargando información de tu perfil...</p>
+
+    {% if rol == "administrador" %}
+        <p><a href="{% url 'lista_usuarios' %}">Ir a Gestión de usuarios</a></p>
+    {% endif %}
+
+    {% if user.is_staff %}
+        <p><a href="/admin/">Panel de administración de Django</a></p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/bienvenida.js' %}"></script>
+{% endblock %}
